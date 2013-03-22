@@ -1,1 +1,5 @@
-This is a Bash-Script for generating your ssh keys.This will be helpful for those setting up their github on a new machine. Run the script and then paste on your profile done!
+This is a Bash-Script for generating your ssh keys.
+This will be helpful for those setting up their github on a new machine. 
+Run the script using:
+./sshgenerate <email_address>
+where <email_address> is your email address and then paste on github profile done!
