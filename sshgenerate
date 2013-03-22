@@ -1,0 +1,20 @@
+#!/bin/bash
+function use {
+eval "$@ < ~/.ssh/id_rsa.pub"
+echo "go and paste  into the 'Key' field at: Account Settings >SSH Keys>Add SSH key"
+}
+cd ~/.ssh
+ssh-keygen -t rsa -C "$1"
+if !(which xclip &> /dev/null); then
+  if which yum &> /dev/null; then
+    sudo yum install xclip
+    use xclip -sel clip
+  elif which apt-get &> /dev/null; then
+    sudo apt-get xclip
+    use xclip -sel clip
+  elif which pbcopy &> /dev/null; then
+    use pbcopy
+  fi
+else
+ use xclip -sel clip 
+fi
