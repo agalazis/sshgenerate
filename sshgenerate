@@ -1,16 +1,16 @@
 #!/bin/sh
 #  Copyright [2013] [Andreas Galazis]
 #############################################################################
-## Licensed under the Apache License, Version 2.0 (the "License");			##
-## you may not use this file except in compliance with the License.			##
+## Licensed under the Apache License, Version 2.0 (the "License");
+## you may not use this file except in compliance with the License.
 ## You may obtain a copy of the License at											##
 #############################################################################
 ##     http://www.apache.org/licenses/LICENSE-2.0
 #############################################################################
-## Unless required by applicable law or agreed to in writing, software		##
-## distributed under the License is distributed on an "AS IS" BASIS,			##
-## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.##
-## See the License for the specific language governing permissions and		##
+## Unless required by applicable law or agreed to in writing, software	
+## distributed under the License is distributed on an "AS IS" BASIS,		
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and	
 ## limitations under the License.														##
 #############################################################################
 #sshgenrate 1.0(Avocado) -more portable than which (posix comatible)-
@@ -44,7 +44,7 @@ testcommand()
  	then 
   		return 1 #failure nothing returned
  	else
-  		return 0 #succeslocation returned and command works
+  		return 0 #succes location returned and command works
  	fi
 }
 #try to find the existence of clipboard copying
@@ -53,14 +53,14 @@ testcommand()
 trysshgen(){
 	if $(testcommand xclip) 
 	then
-   	cd ~/.ssh
-   	ssh-keygen -t rsa -C "$1"
-   	use xclip -sel clip
-   	return 0 
+   		cd ~/.ssh
+   		ssh-keygen -t rsa -C "$1"
+   		use xclip -sel clip
+   		return 0 
 	elif $(testcommand pbcopy)
 	then
-   	cd ~/.ssh
-   	ssh-keygen -t rsa -C "$1"
+   		cd ~/.ssh
+   		ssh-keygen -t rsa -C "$1"
 		use pbcopy
 		return 0
 	else
@@ -68,8 +68,10 @@ trysshgen(){
 		if $(installapp xclip)
 		then
 			trysshgen
+			return 0	
 		else
 			echo "ERROR:your system is not supported"
+			return 1
 		fi
 	fi
 }
