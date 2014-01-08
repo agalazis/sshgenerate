@@ -27,7 +27,7 @@ use()
 installapp(){
 	if $(testcommand yum) 
 	then
-   	sudo yum install $1 &> /dev/null
+   	sudo yum install -y $1 &> /dev/null
    	return 0
 	elif $(testcommand apt-get)
 	then
