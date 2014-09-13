@@ -65,14 +65,7 @@ trysshgen(){
 		return 0
 	else
 	   echo "Installing xclip..."
-		if $(installapp xclip)
-		then
-			trysshgen
-			return 0	
-		else
-			echo "ERROR:your system is not supported"
-			return 1
-		fi
+		 installapp xclip && trysshgen && return 0 ||echo "ERROR:your system is not supported"&&return 1
 	fi
 }
 trysshgen
